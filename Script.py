@@ -1,10 +1,10 @@
 class script(object):
-    START_TXT = """𝙷𝙴𝙻𝙾 {},
-𝙼𝚈 𝙽𝙰𝙼𝙴 𝙸𝚂 <a href='https://t.me/EvaMariaBot'>𝙴𝚅𝙰 𝙼𝙰𝚁𝙸𝙰</a>, 𝙸 𝙲𝙰𝙽 𝙿𝚁𝙾𝚅𝙸𝙳𝙴 𝙼𝙾𝚅𝙸𝙴𝚂, 𝙹𝚄𝚂𝚃 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 𝙰𝙽𝙳 𝙴𝙽𝙹𝙾𝚈 😍"""
+    START_TXT = """Merhaba {},
+Benim Adım <a href='https://t.me/QuickwasteBot'>Quickwaste Film Botu</a>, Film Sağlayabilirim, sadece beni grubuna ekle ve keyfini Çıkar. 😍"""
     HELP_TXT = """𝙷𝙴𝚈 {}
-𝙷𝙴𝚁𝙴 𝙸𝚂 𝚃𝙷𝙴 𝙷𝙴𝙻𝙿 𝙵𝙾𝚁 𝙼𝚈 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂."""
-    ABOUT_TXT = """✯ 𝙼𝚈 𝙽𝙰𝙼𝙴: 𝙴𝚟𝚊 𝙼𝚊𝚛𝚒𝚊
-✯ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁: 𝚃𝚎𝚊𝚖 𝙴𝚟𝚊 𝙼𝚊𝚛𝚒𝚊
+İşte Komutlarım İçin Yardım ."""
+    ABOUT_TXT = """✯ 𝙼𝚈 𝙽𝙰𝙼𝙴: Quickwaste Film Botu
+✯ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁: ali
 ✯ 𝙻𝙸𝙱𝚁𝙰𝚁𝚈: 𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼
 ✯ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴: 𝙿𝚈𝚃𝙷𝙾𝙽 𝟹
 ✯ 𝙳𝙰𝚃𝙰 𝙱𝙰𝚂𝙴: 𝙼𝙾𝙽𝙶𝙾 𝙳𝙱
@@ -26,18 +26,18 @@ class script(object):
 3. alert buttons have a limit of 64 characters.
 
 <b>Commands and Usage:</b>
-• /filter - <code>add a filter in chat</code>
-• /filters - <code>list all the filters of a chat</code>
-• /del - <code>delete a specific filter in chat</code>
-• /delall - <code>delete the whole filters in a chat (chat owner only)</code>"""
+• /filter - <code>Sohbet için bir filtre ekle</code>
+• /filters - <code>Tüm Filtrelerin listesi</code>
+• /del - <code>sohbette belirli bir filtreyi silme</code>
+• /delall - <code>sohbetteki tüm filtreleri silme (Sohbet Kurucusu Sadece)</code>"""
     BUTTON_TXT = """Help: <b>Buttons</b>
 
-- Eva Maria Supports both url and alert inline buttons.
+- Quickwaste Film Botu Hem URL hem de uyarı satır içi düğmelerini destekler .
 
 <b>NOTE:</b>
-1. Telegram will not allows you to send buttons without any content, so content is mandatory.
-2. Eva Maria supports buttons with any telegram media type.
-3. Buttons should be properly parsed as markdown format
+1. Telegram herhangi bir içerik olmadan düğme göndermenize izin vermez, bu nedenle içerik zorunludur.
+2. Eva Maria, herhangi bir telegram medya türüne sahip düğmeleri destekler.
+3. Düğmeler markdown biçimi olarak düzgün bir şekilde ayrıştırılmalıdır
 
 <b>URL buttons:</b>
 <code>[Button Text](buttonurl:https//t.me/EvaMariaBot)</code>
@@ -47,17 +47,17 @@ class script(object):
     AUTOFILTER_TXT = """Help: <b>Auto Filter</b>
 
 <b>NOTE:</b>
-1. Make me the admin of your channel if it's private.
-2. make sure that your channel does not contains cam rip, porn and fake files.
-3. Forward the last message to me with quotes.
- I'll add all the files in that channel to my db."""
+1. Özelse beni kanalınızın yöneticisi yap.
+2. Kanalınızın kam rip, porno ve sahte dosyalar içermediğinden emin olun.
+3. Son mesajı bana alıntılarla iletin.
+ O kanaldaki tüm dosyaları veritabanıma ekleyeceğim. ."""
     CONNECTION_TXT = """Help: <b>Connections</b>
 
-- Used to connect bot to PM for managing filters 
-- it helps to avoid spamming in groups.
+- Filtreleri yönetmek için botu PM'ye bağlamak için kullanılır 
+- gruplar halinde spam'leri önlemeye yardımcı olur. 
 
 <b>NOTE:</b>
-1. Only admins can add a connection.
+1. Yalnızca yöneticiler bağlantı ekleyebilir .
 2. Send <code>/connect</code> for connecting me to ur PM
 
 <b>Commands and Usage:</b>
