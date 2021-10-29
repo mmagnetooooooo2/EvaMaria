@@ -37,6 +37,6 @@ async def verupikkals(bot, message):
         done += 1
         await asyncio.sleep(2)
         if not done % 20:
-            await sts.edit(f"Broadcast in progress:\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nBlocked: {blocked}\nDeleted: {deleted}")    
+            await sts.edit(f"Yayın devam ediyor:\n\nToplam kullanıcı {total_users}\nTammalandı: {done} / {total_users}\nBaşarı: {success}\nEngellenen: {blocked}\nSilinen: {deleted}")    
     time_taken = datetime.timedelta(seconds=int(time.time()-start_time))
-    await sts.edit(f"Broadcast Completed:\nCompleted in {time_taken} seconds.\n\nTotal Users {total_users}\nCompleted: {done} / {total_users}\nSuccess: {success}\nBlocked: {blocked}\nDeleted: {deleted}")
+    await sts.edit(f"Yayın Tamamlandı:\nTamamlandı {time_taken} saniyede.\n\nToplam Kullanıcı {total_users}\nTamamlandı: {done} / {total_users}\nBaşarılı: {success}\nEngellenen: {blocked}\nSilinen: {deleted}")
