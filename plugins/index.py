@@ -17,18 +17,18 @@ lock = asyncio.Lock()
 async def index_files(bot, query):
     if query.data.startswith('index_cancel'):
         temp.CANCEL=True
-        return await query.answer("Cancelling Indexing")
+        return await query.answer("İndex İptal Edildi ")
     _, raju, chat, lst_msg_id, from_user = query.data.split("_")
     if raju == 'reject':
         await query.message.delete()
-        await bot.send_message(int(from_user), f'Your Submission for indexing {chat} has been decliened by our moderators.', reply_to_message_id=int(lst_msg_id))
+        await bot.send_message(int(from_user), f'İndex olarak göndermeniz {chat} moderatörlerimiz tarafından yok edildi .', reply_to_message_id=int(lst_msg_id))
         return
 
     if lock.locked():
-        return await query.answer('Wait until previous process complete.', show_alert=True)
+        return await query.answer('Önceki işlem tamamlanana kadar bekle .', show_alert=True)
     msg = query.message
   
-    await query.answer('Processing...⏳', show_alert=True)
+    await query.answer('işleniyor...⏳', show_alert=True)
     if int(from_user) not in ADMINS:
         await bot.send_message(int(from_user), f'Your Submission for indexing {chat} has been accepted by our moderators and will be added soon.', reply_to_message_id=int(lst_msg_id))
     await msg.edit(
