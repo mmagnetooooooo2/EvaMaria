@@ -16,21 +16,21 @@ async def showid(client, message):
         username = message.from_user.username
         dc_id = message.from_user.dc_id or ""
         await message.reply_text(
-            f"<b>➲ First Name:</b> {first}\n<b>➲ Last Name:</b> {last}\n<b>➲ Username:</b> {username}\n<b>➲ Telegram ID:</b> <code>{user_id}</code>\n<b>➲ Data Centre:</b> <code>{dc_id}</code>",
+            f"<b>➲ İlk Ad:</b> {first}\n<b>➲ Soyadı:</b> {last}\n<b>➲ Kullanıcı Adı:</b> {username}\n<b>➲ Telegram ID:</b> <code>{user_id}</code>\n<b>➲ Veri Merkezi:</b> <code>{dc_id}</code>",
             quote=True
         )
 
     elif chat_type in ["group", "supergroup"]:
         _id = ""
         _id += (
-            "<b>➲ Chat ID</b>: "
+            "<b>➲ Sohbet ID</b>: "
             f"<code>{message.chat.id}</code>\n"
         )
         if message.reply_to_message:
             _id += (
-                "<b>➲ User ID</b>: "
+                "<b>➲ Kullanıcı İD</b>: "
                 f"<code>{message.from_user.id}</code>\n"
-                "<b>➲ Replied User ID</b>: "
+                "<b>➲ Yanıtlanan Kullanıcı İD</b>: "
                 f"<code>{message.reply_to_message.from_user.id}</code>\n"
             )
             file_info = get_file_id(message.reply_to_message)
@@ -54,10 +54,10 @@ async def showid(client, message):
 async def who_is(client, message):
     # https://github.com/SpEcHiDe/PyroGramBot/blob/master/pyrobot/plugins/admemes/whois.py#L19
     status_message = await message.reply_text(
-        "`Fetching user info...`"
+        "`Kullanıcı Bilgisi Getiriliyoe`"
     )
     await status_message.edit(
-        "`Processing user info...`"
+        "`Kullanıcı Bilgisi İnceleniyor...`"
     )
     from_user = None
     from_user_id, _ = extract_user(message)
@@ -70,15 +70,15 @@ async def who_is(client, message):
         await status_message.edit("no valid user_id / message specified")
     else:
         message_out_str = ""
-        message_out_str += f"<b>➲First Name:</b> {from_user.first_name}\n"
+        message_out_str += f"<b>➲İlk Ad:</b> {from_user.first_name}\n"
         last_name = from_user.last_name or "<b>None</b>"
-        message_out_str += f"<b>➲Last Name:</b> {last_name}\n"
+        message_out_str += f"<b>➲Soyadı:</b> {last_name}\n"
         message_out_str += f"<b>➲Telegram ID:</b> <code>{from_user.id}</code>\n"
         username = from_user.username or "<b>None</b>"
         dc_id = from_user.dc_id or "[User Doesnt Have A Valid DP]"
-        message_out_str += f"<b>➲Data Centre:</b> <code>{dc_id}</code>\n"
-        message_out_str += f"<b>➲User Name:</b> @{username}\n"
-        message_out_str += f"<b>➲User 𝖫𝗂𝗇𝗄:</b> <a href='tg://user?id={from_user.id}'><b>Click Here</b></a>\n"
+        message_out_str += f"<b>➲Veri Merkezi:</b> <code>{dc_id}</code>\n"
+        message_out_str += f"<b>➲Kullanıcı Adı:</b> @{username}\n"
+        message_out_str += f"<b>➲Kullanıcı Linki:</b> <a href='tg://user?id={from_user.id}'><b>Click Here</b></a>\n"
         if message.chat.type in (("supergroup", "channel")):
             try:
                 chat_member_p = await message.chat.get_member(from_user.id)
@@ -98,7 +98,7 @@ async def who_is(client, message):
                 message=chat_photo.big_file_id
             )
             buttons = [[
-                InlineKeyboardButton('🔐 Close', callback_data='close_data')
+                InlineKeyboardButton('🔐 Kapat', callback_data='close_data')
             ]]
             reply_markup = InlineKeyboardMarkup(buttons)
             await message.reply_photo(
@@ -112,7 +112,7 @@ async def who_is(client, message):
             os.remove(local_user_photo)
         else:
             buttons = [[
-                InlineKeyboardButton('🔐 Close', callback_data='close_data')
+                InlineKeyboardButton('🔐 Kapat', callback_data='close_data')
             ]]
             reply_markup = InlineKeyboardMarkup(buttons)
             await message.reply_text(
@@ -141,9 +141,9 @@ async def imdb_search(client, message):
             ]
             for movie in movies
         ]
-        await k.edit('Here is what i found on IMDb', reply_markup=InlineKeyboardMarkup(btn))
+        await k.edit('İşte IMDB'de bulduklarım', reply_markup=InlineKeyboardMarkup(btn))
     else:
-        await message.reply('Give me a movie Name')
+        await message.reply('Bana Bir Film Adı Gir')
 
 @Client.on_callback_query(filters.regex('^imdb'))
 async def imdb_callback(bot: Client, query: CallbackQuery):
@@ -158,10 +158,10 @@ async def imdb_callback(bot: Client, query: CallbackQuery):
             ]
         ]
     if imdb.get('poster'):
-        await query.message.reply_photo(photo=imdb['poster'], caption=f"IMDb Data:\n\n🏷 Title:<a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Genres: {imdb.get('genres')}\n📆 Year:<a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n🌟 Rating: <a href={imdb['url']}/ratings>{imdb.get('rating')}</a> / 10\n🖋 StoryLine: <code>{imdb.get('plot')} </code>", reply_markup=InlineKeyboardMarkup(btn))
+        await query.message.reply_photo(photo=imdb['poster'], caption=f"IMDb Bilgisi:\n\n🏷 Title:<a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Tür: {imdb.get('genres')}\n📆 Yıl:<a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n🌟 Puan: <a href={imdb['url']}/ratings>{imdb.get('rating')}</a> / 10\n🖋 Hikaye Konusu: <code>{imdb.get('plot')} </code>", reply_markup=InlineKeyboardMarkup(btn))
         await query.message.delete()
     else:
-        await query.message.edit(f"IMDb Data:\n\n🏷 Title:<a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Genres: {imdb.get('genres')}\n📆 Year:<a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n🌟 Rating: <a href={imdb['url']}/ratings>{imdb.get('rating')}</a> / 10\n🖋 StoryLine: <code>{imdb.get('plot')} </code>", reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
+        await query.message.edit(f"IMDb Bilgisi:\n\n🏷 Title:<a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Tür: {imdb.get('genres')}\n📆 Yıl:<a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n🌟 Puan: <a href={imdb['url']}/ratings>{imdb.get('rating')}</a> / 10\n🖋 Hikaye Konusu: <code>{imdb.get('plot')} </code>", reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
     await query.answer()
         
 
