@@ -141,7 +141,7 @@ async def imdb_search(client, message):
             ]
             for movie in movies
         ]
-        await k.edit('İşte IMDB'de bulduklarım', reply_markup=InlineKeyboardMarkup(btn))
+        await k.edit('İşte IMDB'de bulduklarim', reply_markup=InlineKeyboardMarkup(btn))
     else:
         await message.reply('Bana Bir Film Adı Gir')
 
