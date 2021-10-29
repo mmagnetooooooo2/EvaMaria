@@ -21,11 +21,11 @@ async def save_group(bot, message):
         if message.chat.id in temp.BANNED_CHATS:
             # Inspired from a boat of a banana tree
             buttons = [[
-                InlineKeyboardButton('Support', url='https://t.me/EvaMariaSupport')
+                InlineKeyboardButton('Support', url='https://t.me/mmagneto')
             ]]
             reply_markup=InlineKeyboardMarkup(buttons)
             k = await message.reply(
-                text='<b>CHAT NOT ALLOWED 🐞\n\nMy admins has restricted me from working here ! If you want to know more about it contact support..</b>',
+                text='<b>Sohbet Aktif Değil 🐞\n\nYöneticilerim burada çalışmamı kısıtladı ! Bu konuda daha fazla şey öğrenmek istiyorsanız desteğe başvurun..</b>',
                 reply_markup=reply_markup,
             )
 
@@ -38,8 +38,8 @@ async def save_group(bot, message):
         bot = await bot.get_me()
         username = bot.username
         buttons = [[
-            InlineKeyboardButton('ℹ️ Help', url=f"https://t.me/{username}?start"),
-            InlineKeyboardButton('📢 Updates', url='https://t.me/EvaMariaSupport')
+            InlineKeyboardButton('ℹ️ Yardım', url=f"https://t.me/{username}?start"),
+            InlineKeyboardButton('📢 Güncelleme', url='https://t.me/mmagneto')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await message.reply_text(
@@ -52,7 +52,7 @@ async def save_group(bot, message):
                     await (temp.MELCOW['welcome']).delete()
                 except:
                     pass
-            temp.MELCOW['welcome'] = await message.reply(f"<b>Hey , {u.mention}, Welcome to {message.chat.title}</b>")
+            temp.MELCOW['welcome'] = await message.reply(f"<b>Hey , {u.mention}, Hoşgeldin {message.chat.title}</b>")
 
 
 @Client.on_message(filters.command('leave') & filters.user(ADMINS))
@@ -66,12 +66,12 @@ async def leave_a_chat(bot, message):
         chat = chat
     try:
         buttons = [[
-            InlineKeyboardButton('Support', url='https://t.me/EvaMariaSupport')
+            InlineKeyboardButton('Destek', url='https://t.me/mmagneto')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await bot.send_message(
             chat_id=chat,
-            text='<b>Hello Friends, \nMy admin has told me to leave from group so i go! If you wanna add me again contact my support group.</b>',
+            text='<b>Merhaba Arkadaş, \nYöneticim gruptan ayrılmamı söyledi, bu yüzden gidiyorum! Beni tekrar eklemek isterseniz,Destek İle iletişim kurun.</b>',
             reply_markup=reply_markup,
         )
 
@@ -82,34 +82,34 @@ async def leave_a_chat(bot, message):
 @Client.on_message(filters.command('disable') & filters.user(ADMINS))
 async def disable_chat(bot, message):
     if len(message.command) == 1:
-        return await message.reply('Give me a chat id')
+        return await message.reply('Bana bir sohbet İD Yolla')
     r = message.text.split(None)
     if len(r) > 2:
         reason = message.text.split(None, 2)[2]
         chat = message.text.split(None, 2)[1]
     else:
         chat = message.command[1]
-        reason = "No reason Provided"
+        reason = "Sağlanan neden Yok"
     try:
         chat_ = int(chat)
     except:
         return await message.reply('Give Me A Valid Chat ID')
     cha_t = await db.get_chat(int(chat_))
     if not cha_t:
-        return await message.reply("Chat Not Found In DB")
+        return await message.reply("Sohbet Bulunamadı")
     if cha_t['is_disabled']:
         return await message.reply(f"This chat is already disabled:\nReason-<code> {cha_t['reason']} </code>")
     await db.disable_chat(int(chat_), reason)
     temp.BANNED_CHATS.append(int(chat_))
-    await message.reply('Chat Succesfully Disabled')
+    await message.reply('Sohbet Başarı ile devredışı bırakıldı')
     try:
         buttons = [[
-            InlineKeyboardButton('Support', url='https://t.me/EvaMariaSupport')
+            InlineKeyboardButton('Destek', url='https://t.me/mmagneto')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await bot.send_message(
             chat_id=chat_, 
-            text=f'<b>Hello Friends, \nMy admin has told me to leave from group so i go! If you wanna add me again contact my support group.</b> \nReason : <code>{reason}</code>',
+            text=f'<b>Merhaba Arkadaşlar, \nYöneticim gruptan ayrılmamı söyledi, bu yüzden gidiyorum! Beni yeniden eklemek isterseniz desteğe Başvurun.</b> \nSebep : <code>{reason}</code>',
             reply_markup=reply_markup)
         await bot.leave_chat(chat_)
     except Exception as e:
