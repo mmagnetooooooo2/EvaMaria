@@ -127,7 +127,7 @@ async def who_is(client, message):
 @Client.on_message(filters.command(["imdb", 'search']))
 async def imdb_search(client, message):
     if ' ' in message.text:
-        k = await message.reply('Bekle Arıyorum imdb'de')
+        k = await message.reply('Bekle Arıyorum.')
         r, title = message.text.split(None, 1)
         movies = await get_poster(title, bulk=True)
         if not movies:
