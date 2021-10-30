@@ -124,16 +124,16 @@ async def re_enable_chat(bot, message):
     try:
         chat_ = int(chat)
     except:
-        return await message.reply('Give Me A Valid Chat ID')
+        return await message.reply('Bana Geçerli Bir Sohbet İD Yolla')
     sts = await db.get_chat(int(chat))
     if not sts:
-        return await message.reply("Chat Not Found In DB !")
+        return await message.reply("Sohbet veri tabanımda bulunamadı!")
     print(sts)
     if not sts.get('is_disabled'):
-        return await message.reply('This chat is not yet disabled.')
+        return await message.reply('Bu sohbet henüz devre dışı değil.')
     await db.re_enable_chat(int(chat_))
     temp.BANNED_CHATS.remove(int(chat_))
-    await message.reply("Chat Succesfully re-enabled")
+    await message.reply("Sohbet Başarıyla yeniden etkinleştirildi.")
 
 
 @Client.on_message(filters.command('stats'))
@@ -159,7 +159,7 @@ async def gen_invite(bot, message):
     try:
         chat = int(chat)
     except:
-        return await message.reply('Give Me A Valid Chat ID')
+        return await message.reply('Bana Geçerli Bir Sohbet İD Gir. ')
     try:
         link = await bot.create_chat_invite_link(chat)
     except ChatAdminRequired:
@@ -172,14 +172,14 @@ async def gen_invite(bot, message):
 async def ban_a_user(bot, message):
     # https://t.me/GetTGLink/4185
     if len(message.command) == 1:
-        return await message.reply('Give me a user id / username')
+        return await message.reply('Bana Bir Kullanıcı Adı Gir.')
     r = message.text.split(None)
     if len(r) > 2:
         reason = message.text.split(None, 2)[2]
         chat = message.text.split(None, 2)[1]
     else:
         chat = message.command[1]
-        reason = "No reason Provided"
+        reason = "istek sağlanamadı"
     try:
         chat = int(chat)
     except:
@@ -205,14 +205,14 @@ async def ban_a_user(bot, message):
 @Client.on_message(filters.command('unban') & filters.user(ADMINS))
 async def unban_a_user(bot, message):
     if len(message.command) == 1:
-        return await message.reply('Give me a user id / username')
+        return await message.reply('Bana Bir Kullanıcı İD Gir.')
     r = message.text.split(None)
     if len(r) > 2:
         reason = message.text.split(None, 2)[2]
         chat = message.text.split(None, 2)[1]
     else:
         chat = message.command[1]
-        reason = "No reason Provided"
+        reason = "istek sağlanamadı"
     try:
         chat = int(chat)
     except:
@@ -238,7 +238,7 @@ async def unban_a_user(bot, message):
 @Client.on_message(filters.command('users') & filters.user(ADMINS))
 async def list_users(bot, message):
     # https://t.me/GetTGLink/4184
-    raju = await message.reply('Getting List Of Users')
+    raju = await message.reply('Kullanıcıların Listesi Getiriliyor.')
     users = await db.get_all_users()
     out = "Users Saved In DB Are:\n\n"
     async for user in users:
@@ -248,18 +248,18 @@ async def list_users(bot, message):
     except MessageTooLong:
         with open('users.txt', 'w+') as outfile:
             outfile.write(out)
-        await message.reply_document('users.txt', caption="List Of Users")
+        await message.reply_document('users.txt', caption="Kullanıcıların Listesi")
 
 @Client.on_message(filters.command('chats') & filters.user(ADMINS))
 async def list_chats(bot, message):
-    raju = await message.reply('Getting List Of chats')
+    raju = await message.reply('Sohbetlerin listesi getiriliyor.')
     chats = await db.get_all_chats()
     out = "Chats Saved In DB Are:\n\n"
     async for chat in chats:
-        out += f"**Title:** `{chat['title']}`\n**- ID:** `{chat['id']}`\n"
+        out += f"**Başlık:** `{chat['title']}`\n**- İD:** `{chat['id']}`\n"
     try:
         await raju.edit_text(out)
     except MessageTooLong:
         with open('chats.txt', 'w+') as outfile:
             outfile.write(out)
-        await message.reply_document('chats.txt', caption="List Of Chats")
+        await message.reply_document('chats.txt', caption="Sohbetlerin Listesi")
