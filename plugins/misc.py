@@ -54,7 +54,7 @@ async def showid(client, message):
 async def who_is(client, message):
     # https://github.com/SpEcHiDe/PyroGramBot/blob/master/pyrobot/plugins/admemes/whois.py#L19
     status_message = await message.reply_text(
-        "`Kullanıcı Bilgisi Getiriliyoe`"
+        "`Kullanıcı Bilgisi Getiriliyor`"
     )
     await status_message.edit(
         "`Kullanıcı Bilgisi İnceleniyor...`"
@@ -127,11 +127,11 @@ async def who_is(client, message):
 @Client.on_message(filters.command(["imdb", 'search']))
 async def imdb_search(client, message):
     if ' ' in message.text:
-        k = await message.reply('Searching ImDB')
+        k = await message.reply('Bekle Arıyorum imdb'de')
         r, title = message.text.split(None, 1)
         movies = await get_poster(title, bulk=True)
         if not movies:
-            return await message.reply("No results Found")
+            return await message.reply("bunu bulamadım dostum")
         btn = [
             [
                 InlineKeyboardButton(
@@ -158,10 +158,10 @@ async def imdb_callback(bot: Client, query: CallbackQuery):
             ]
         ]
     if imdb.get('poster'):
-        await query.message.reply_photo(photo=imdb['poster'], caption=f"IMDb Bilgisi:\n\n🏷 Title:<a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Tür: {imdb.get('genres')}\n📆 Yıl:<a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n🌟 Puan: <a href={imdb['url']}/ratings>{imdb.get('rating')}</a> / 10\n🖋 Hikaye Konusu: <code>{imdb.get('plot')} </code>", reply_markup=InlineKeyboardMarkup(btn))
+        await query.message.reply_photo(photo=imdb['poster'], caption=f"IMDb Bilgisi:\n\n🏷 Başlık:<a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Tür: {imdb.get('genres')}\n📆 Yıl:<a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n🌟 Puan: <a href={imdb['url']}/ratings>{imdb.get('rating')}</a> / 10\n🖋 Hikaye Konusu: <code>{imdb.get('plot')} </code>", reply_markup=InlineKeyboardMarkup(btn))
         await query.message.delete()
     else:
-        await query.message.edit(f"IMDb Bilgisi:\n\n🏷 Title:<a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Tür: {imdb.get('genres')}\n📆 Yıl:<a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n🌟 Puan: <a href={imdb['url']}/ratings>{imdb.get('rating')}</a> / 10\n🖋 Hikaye Konusu: <code>{imdb.get('plot')} </code>", reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
+        await query.message.edit(f"IMDb Bilgisi:\n\n🏷 Başlık:<a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Tür: {imdb.get('genres')}\n📆 Yıl:<a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n🌟 Puan: <a href={imdb['url']}/ratings>{imdb.get('rating')}</a> / 10\n🖋 Hikaye Konusu: <code>{imdb.get('plot')} </code>", reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
     await query.answer()
         
 
