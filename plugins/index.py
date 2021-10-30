@@ -30,11 +30,11 @@ async def index_files(bot, query):
   
     await query.answer('işleniyor...⏳', show_alert=True)
     if int(from_user) not in ADMINS:
-        await bot.send_message(int(from_user), f'Your Submission for indexing {chat} has been accepted by our moderators and will be added soon.', reply_to_message_id=int(lst_msg_id))
+        await bot.send_message(int(from_user), f'Dizine ek olarak göndermeniz {chat} moderatörlerimiz tarafından kabul edilmiştir ve yakında eklenecektir.', reply_to_message_id=int(lst_msg_id))
     await msg.edit(
         "Starting Indexing",
         reply_markup = InlineKeyboardMarkup(
-            [[InlineKeyboardButton('Cancel', callback_data='index_cancel')]]
+            [[InlineKeyboardButton('İptal', callback_data='index_cancel')]]
         )
     )
     await index_files_to_db(int(lst_msg_id), int(chat), msg, bot)
@@ -55,28 +55,28 @@ async def send_for_index(bot, message):
     if message.from_user.id in ADMINS:
         buttons = [
             [
-                InlineKeyboardButton('Yes', callback_data=f'index_accept_{chat_id}_{last_msg_id}_{message.from_user.id}')
+                InlineKeyboardButton('Evet', callback_data=f'index_accept_{chat_id}_{last_msg_id}_{message.from_user.id}')
             ],
             [
-                InlineKeyboardButton('close', callback_data='close_data'),
+                InlineKeyboardButton('Kapat', callback_data='close_data'),
             ]
             ]
         reply_markup = InlineKeyboardMarkup(buttons)
-        return await message.reply(f'Do you Want To Index This Channel?\n\nChat ID/ Username - {chat_id}\nLast Message ID - {last_msg_id}', reply_markup=reply_markup)
+        return await message.reply(f'Bu Kanalı Dizine Almak İstiyor musunuz??\n\nSohbet ID/ Username - {chat_id}\nSon Mesaj ID - {last_msg_id}', reply_markup=reply_markup)
 
     if not message.forward_from_chat.username:
         try:
             link = (await bot.create_chat_invite_link(chat_id)).invite_link
         except ChatAdminRequired:
-            return await message.reply('Make sure iam an admin in the chat and have permission to invite users.')
+            return await message.reply('Sohbette yönetici olduğundan ve kullanıcıları davet etme iznine sahip olduğundan emin olun.')
     else:
         link = f"@{message.forward_from_chat.username}"
     buttons = [
         [
-            InlineKeyboardButton('Accept Index', callback_data=f'index_accept_{chat_id}_{last_msg_id}_{message.from_user.id}')
+            InlineKeyboardButton('Dizini Kabul Et', callback_data=f'index_accept_{chat_id}_{last_msg_id}_{message.from_user.id}')
         ],
         [
-            InlineKeyboardButton('Reject Index', callback_data=f'index_reject_{chat_id}_{message.message_id}_{message.from_user.id}'),
+            InlineKeyboardButton('Dizini Reddet', callback_data=f'index_reject_{chat_id}_{message.message_id}_{message.from_user.id}'),
         ]
         ]
     reply_markup = InlineKeyboardMarkup(buttons)
