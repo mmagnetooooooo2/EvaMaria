@@ -30,3 +30,7 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', ''))
 
 CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", None)
+
+# Heroku
+HEROKU_APP_NAME = environ.get('HEROKU_APP_NAME', None)
+HEROKU_API_KEY = environ.get('HEROKU_API_KEY', None)
