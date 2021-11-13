@@ -33,6 +33,14 @@
             "description": "Username or ID of channel or group. Separate multiple IDs by space.",
             "value": ""
         },
+        "HEROKU_API_KEY": {
+            "description": "Heroku API",
+            "required": true
+        },
+        "HEROKU_APP_NAME": {
+            "description": "Heroku APP Name",
+            "required": true
+        },
         "ADMINS": {
             "description": "Username or ID of Admin. Separate multiple Admins by space.",
             "value": ""
