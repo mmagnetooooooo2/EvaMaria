@@ -88,7 +88,7 @@ async def answer(bot, query):
 def get_reply_markup(query):
     buttons = [
         [
-            InlineKeyboardButton('Tekrar Ara', switch_inline_query_current_chat=query)
+            InlineKeyboardButton('Tekrar Ara', @medyarobot=query)
         ]
         ]
     return InlineKeyboardMarkup(buttons)
