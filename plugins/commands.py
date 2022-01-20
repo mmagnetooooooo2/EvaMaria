@@ -67,7 +67,6 @@ try:
                 )
             else:
                 invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
-    print(file_id)
     files = (await get_file_details(file_id))[0]
     title = files.file_name
     size=get_size(files.file_size)
