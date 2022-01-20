@@ -35,12 +35,12 @@ async def start(client, message):
         try:
             invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
         except ChatAdminRequired:
-            logger.error("Make sure Bot is admin in Forcesub channel")
+            logger.error("Bot'un Forcesub kanalında yönetici olduğundan emin olun")
             return
         btn = [
             [
                 InlineKeyboardButton(
-                    "🤖 Join Updates Channel", url=invite_link.invite_link
+                    "Grubuma Katılın!", url=invite_link.invite_link
                 )
             ]
         ]
@@ -49,7 +49,7 @@ async def start(client, message):
             btn.append([InlineKeyboardButton(" 🔄 Tekrar Dene", callback_data=f"checksub#{message.command[1]}")])
         await client.send_message(
             chat_id=message.from_user.id,
-            text="**Please Join My Updates Channel to use this Bot!**",
+            text="**Bu Botu kullanmak için lütfen Grubuma Katılın!**",
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode="markdown"
             )
