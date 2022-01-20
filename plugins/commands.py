@@ -57,7 +57,9 @@ async def start(client, message):
     if message.command[1] in ["subscribe", "error", "okay"]:
         return
     file_id = message.command[1]
-try:
+    print(file_id) 
+    if AUTH_CHANNEL and not await is_subscribed(client, message):
+        try:
             user = await client.get_chat_member(AUTH_CHANNEL, message.chat.id)
             if user.status == "kicked":
                 await client.delete_messages(
@@ -65,8 +67,19 @@ try:
                     message_ids=message.message_id,
                     revoke=True
                 )
-            else:
-                invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
+                return
+        except ChatAdminRequired:
+            logger.error("Bot'un Forcesub kanalında yönetici olduğundan emin olun")
+            return
+        except UserNotParticipant:
+            invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
+        btn = [
+            [
+                InlineKeyboardButton(
+                    "Kanala Katıl", url=invite_link.invite_link
+                )
+            ]
+        ]
     files = (await get_file_details(file_id))[0]
     title = files.file_name
     size=get_size(files.file_size)
