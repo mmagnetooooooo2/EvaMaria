@@ -1,6 +1,6 @@
 class script(object):
     START_TXT = """Merhaba {},
-Benim Adım <a href='https://t.me/QuickwasteBot'>Quickwaste Film Botu</a>, Film Sağlayabilirim, sadece beni grubuna ekle ve keyfini Çıkar. 😍"""
+Benim Adım <a href='https://t.me/Anagrupbot'>Ana Grup Bot</a>, Film Sağlayabilirim, sadece beni grubuna ekle ve keyfini Çıkar. 😍"""
     HELP_TXT = """Merhaba {}
 İşte Komutlarım İçin Yardım ."""
     ABOUT_TXT = """✯ 𝙼𝚈 𝙽𝙰𝙼𝙴: Quickwaste Film Botu
@@ -11,8 +11,8 @@ Benim Adım <a href='https://t.me/QuickwasteBot'>Quickwaste Film Botu</a>, Film 
 ✯ Bot 𝚂unucusu: Heroku
 ✯ Yapı Durumu: v1.0.1 [ 𝙱𝙴𝚃𝙰 ]"""
     SOURCE_TXT = """<b>NOTE:</b>
-- Eva Maria is a open source project. 
-- Source - https://github.com/EvamariaTG/EvaMaria  
+- Eva Maria açık kaynaklı bir projedir. 
+- Source - https://t.me/mmagneto
 
 <b>DEVS:</b>
 - <a href=https://t.me/TeamEvamaria>Team Eva Maria</a>"""
