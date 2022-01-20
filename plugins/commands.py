@@ -57,6 +57,16 @@ async def start(client, message):
     if message.command[1] in ["subscribe", "error", "okay"]:
         return
     file_id = message.command[1]
+try:
+            user = await client.get_chat_member(AUTH_CHANNEL, message.chat.id)
+            if user.status == "kicked":
+                await client.delete_messages(
+                    chat_id=message.chat.id,
+                    message_ids=message.message_id,
+                    revoke=True
+                )
+            else:
+                invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
     print(file_id)
     files = (await get_file_details(file_id))[0]
     title = files.file_name
