@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 @Client.on_message(filter.private & filters.command("start"))
 async def start(client, message):
-if AUTH_CHANNEL:
+    if AUTH_CHANNEL:
         try:
             user = await client.get_chat_member(AUTH_CHANNEL, message.chat.id)
             if user.status == "kicked":
