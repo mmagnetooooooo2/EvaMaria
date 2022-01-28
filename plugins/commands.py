@@ -14,6 +14,28 @@ logger = logging.getLogger(__name__)
 
 @Client.on_message(filter.private & filters.command("start"))
 async def start(client, message):
+if AUTH_CHANNEL and not await is_subscribed(client, message):
+        try:
+            user = await client.get_chat_member(AUTH_CHANNEL, message.chat.id)
+            if user.status == "kicked":
+                await client.delete_messages(
+                    chat_id=message.chat.id,
+                    message_ids=message.message_id,
+                    revoke=True
+                )
+                return
+        except ChatAdminRequired:
+            logger.error("Bot'un Forcesub kanalında yönetici olduğundan emin olun")
+            return
+        except UserNotParticipant:
+            invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
+        btn = [
+            [
+                InlineKeyboardButton(
+                    "Kanala Katıl", url=invite_link.invite_link
+                )
+            ]
+        ]
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id, message.from_user.first_name)
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
@@ -57,29 +79,7 @@ async def start(client, message):
     if message.command[1] in ["subscribe", "error", "okay"]:
         return
     file_id = message.command[1]
-    print(file_id) 
-    if AUTH_CHANNEL and not await is_subscribed(client, message):
-        try:
-            user = await client.get_chat_member(AUTH_CHANNEL, message.chat.id)
-            if user.status == "kicked":
-                await client.delete_messages(
-                    chat_id=message.chat.id,
-                    message_ids=message.message_id,
-                    revoke=True
-                )
-                return
-        except ChatAdminRequired:
-            logger.error("Bot'un Forcesub kanalında yönetici olduğundan emin olun")
-            return
-        except UserNotParticipant:
-            invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
-        btn = [
-            [
-                InlineKeyboardButton(
-                    "Kanala Katıl", url=invite_link.invite_link
-                )
-            ]
-        ]
+    print(file_id)
     files = (await get_file_details(file_id))[0]
     title = files.file_name
     size=get_size(files.file_size)
