@@ -12,7 +12,7 @@ from utils import get_size, is_subscribed, temp
 
 logger = logging.getLogger(__name__)
 
-@Client.on_message(filter.private & filters.command("start"))
+@Client.on_message(filters.private & filters.command("start"))
 async def start(client, message):
     if AUTH_CHANNEL:
         try:
