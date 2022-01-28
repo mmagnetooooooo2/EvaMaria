@@ -32,7 +32,7 @@ async def start(client, message):
         btn = [
             [
                 InlineKeyboardButton(
-                    "Kanala Katıl", url=invite_link.invite_link
+                    "Kanala Katıl", url=await client.create_chat_invite_link(int(AUTH_CHANNEL))
                 )
             ]
         ]
