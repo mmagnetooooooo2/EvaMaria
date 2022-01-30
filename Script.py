@@ -4,7 +4,7 @@ Bu bot ücretli bir bottur botu kullanmak ve bilgi almak için @baygoktas hesab�
     HELP_TXT = """Merhaba {}
 İşte Komutlarım İçin Yardım ."""
     ABOUT_TXT = """✯ 𝙼𝚈 𝙽𝙰𝙼𝙴: Paralı Bot
-✯ Yaratıcı: ali
+✯ Yaratıcı: @mmagneto
 ✯ Kütüphane: Pyrogram
 ✯ Dil: Python 3
 ✯ Veri Tabanı: Mongo db
@@ -12,7 +12,7 @@ Bu bot ücretli bir bottur botu kullanmak ve bilgi almak için @baygoktas hesab�
 ✯ Yapı Durumu: v1.0.1 [ 𝙱𝙴𝚃𝙰 ]"""
     SOURCE_TXT = """<b>NOTE:</b>
 - Eva Maria is a open source project. 
-- Source - https://github.com/EvamariaTG/EvaMaria  
+- Source - https://t.me/mmagneto
 
 <b>DEVS:</b>
 - <a href=https://t.me/baygoktas>Team goktas</a>"""
