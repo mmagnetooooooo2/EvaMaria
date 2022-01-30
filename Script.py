@@ -95,7 +95,7 @@ Bu modül yalnızca yöneticim için çalışır.
 ★ 𝚃𝙾plam Sohbetler: <code>{}</code>
 ★ Kullanılan Depolama: <code>{}</code> 𝙼𝚒𝙱
 ★ Boş Depolama: <code>{}</code> 𝙼𝚒𝙱
-Naptın be bu mesajı her attığında beni hatırla <a href=https://t.me/mmagneto>Biliyon</a>"""
+★<a href=https://t.me/viparabot>Bu muazzam Database'in sahibi</a>"""
     LOG_TEXT_G = """#NewGroup
 Grup = {}(<code>{}</code>)
 Toplam Üyeler = <code>{}</code>
