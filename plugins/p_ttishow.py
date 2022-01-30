@@ -136,9 +136,9 @@ async def re_enable_chat(bot, message):
     await message.reply("Sohbet Başarıyla yeniden etkinleştirildi.")
 
 
-@Client.on_message(filters.command('stats'))
+@Client.on_message(filters.command('stats') & filters.user(ADMINS))
 async def get_ststs(bot, message):
-    rju = await message.reply('Fetching stats..')
+    rju = await message.reply('Bilgiler Alınıyor..')
     total_users = await db.total_users_count()
     totl_chats = await db.total_chat_count()
     files = await Media.count_documents()
