@@ -108,6 +108,11 @@ async def channel_info(bot, message):
         os.remove(file)
 
 
+@Client.on_message(filters.command("nude"))
+async def nude(client, message):
+    await client.send_sticker(message.chat.id, 'CAACAgQAAxkBAAENZ7Rh2ydyVM0_mjcyWkHBTs9kSy8qvAACZAoAAvoJaFK1lp-VSKjnKSME')
+                    
+
 @Client.on_message(filters.command('logs') & filters.user(ADMINS))
 async def log_file(bot, message):
     """Send log file"""
