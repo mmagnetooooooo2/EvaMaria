@@ -1,9 +1,9 @@
 class script(object):
     START_TXT = """Merhaba {},
-Benim Adım <a href='https://t.me/QuickwasteBot'>Quickwaste Film Botu</a>, Film Sağlayabilirim, sadece beni grubuna ekle ve keyfini Çıkar. 😍"""
+Bu bot ücretli bir bottur botu kullanmak ve bilgi almak için @baygoktas hesabına yazabilirsin. No money, No simplicity."""
     HELP_TXT = """Merhaba {}
 İşte Komutlarım İçin Yardım ."""
-    ABOUT_TXT = """✯ 𝙼𝚈 𝙽𝙰𝙼𝙴: Quickwaste Film Botu
+    ABOUT_TXT = """✯ 𝙼𝚈 𝙽𝙰𝙼𝙴: Paralı Bot
 ✯ Yaratıcı: ali
 ✯ Kütüphane: Pyrogram
 ✯ Dil: Python 3
@@ -15,7 +15,7 @@ Benim Adım <a href='https://t.me/QuickwasteBot'>Quickwaste Film Botu</a>, Film 
 - Source - https://github.com/EvamariaTG/EvaMaria  
 
 <b>DEVS:</b>
-- <a href=https://t.me/TeamEvamaria>Team Eva Maria</a>"""
+- <a href=https://t.me/baygoktas>Team goktas</a>"""
     MANUELFILTER_TXT = """Help: <b>Filters</b>
 
 - Filter is the feature were users can set automated replies for a particular keyword and tessa will respond whenever a keyword is found the message
@@ -94,7 +94,8 @@ Bu modül yalnızca yöneticim için çalışır.
 ★ Toplam Kullanıcı: <code>{}</code>
 ★ 𝚃𝙾plam Sohbetler: <code>{}</code>
 ★ Kullanılan Depolama: <code>{}</code> 𝙼𝚒𝙱
-★ Boş Depolama: <code>{}</code> 𝙼𝚒𝙱"""
+★ Boş Depolama: <code>{}</code> 𝙼𝚒𝙱
+Naptın be bu mesajı her attığında beni hatırla <a href=https://t.me/mmagneto>Biliyon</a>"""
     LOG_TEXT_G = """#NewGroup
 Grup = {}(<code>{}</code>)
 Toplam Üyeler = <code>{}</code>
