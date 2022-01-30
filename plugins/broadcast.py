@@ -13,7 +13,7 @@ async def verupikkals(bot, message):
     users = await db.get_all_users()
     b_msg = message.reply_to_message
     sts = await message.reply_text(
-        text='Senin Mesajın Yayınlanıyor...'
+        text='Senin Mesajın Yayınlanıyor demek mesaj yayınlıcak kadar paralı üyen var vay be...'
     )
     start_time = time.time()
     total_users = await db.total_users_count()
